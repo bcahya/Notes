@@ -1,0 +1,29 @@
+Install opencv 4.5.3 on Macbook Pro M1 2020
+
+arch -arm64 cmake \                                                                -DCMAKE_SYSTEM_PROCESSOR=arm64 \
+-DCMAKE_OSX_ARCHITECTURES=arm64 \
+-DWITH_OPENJPEG=OFF \
+-DWITH_IPP=OFF \
+-D CMAKE_BUILD_TYPE=RELEASE \
+-D CMAKE_INSTALL_PREFIX=/usr/local \
+-D OPENCV_EXTRA_MODULES_PATH=/Users/bcahya/Library/MachineLearning/opencv_contrib-4.5.3/modules \
+-D PYTHON3_EXECUTABLE=/Users/bcahya/miniforge3/envs/testcv/bin/python3 \
+-D BUILD_opencv_python2=OFF \
+-D BUILD_opencv_python3=ON \
+-D INSTALL_PYTHON_EXAMPLES=ON \
+-D INSTALL_C_EXAMPLES=OFF \
+-D OPENCV_ENABLE_NONFREE=ON \
+-D BUILD_EXAMPLES=ON ..
+
+arch -arm64 make -j8
+	
+arch -arm64 mdfind cv2.cpython
+
+cd /Users/bcahya/miniforge3/envs/testcv/lib/python3.8/site-packages
+
+ln -s ~/Library/MachineLearning/opencv-4.5.3/build/lib/python3/cv2.cpython-39-darwin.so
+
+
+Reff:
+1. https://caffeinedev.medium.com/building-and-installing-opencv-on-m1-macbook-c4654b10c188
+2. https://sayak.dev/install-opencv-m1/  (check comment)
